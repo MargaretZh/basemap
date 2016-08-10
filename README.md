@@ -3,7 +3,7 @@
 ##Description 
 This map was made with styles of water, boundaries, highways and etc for Len.region 
 
-#Sources
+##Sources
 Additionaly in the process of creating map was used [Maki.Icons](https://www.mapbox.com/maki-icons/)
 and [Paratype font](http://www.paratype.ru/public/)
 
