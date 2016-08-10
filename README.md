@@ -1,7 +1,7 @@
 ##[Preview map](https://raw.githubusercontent.com/MargaretZh/basemap/master/basemap.png)
 
 ##Description 
-This is CartoCSS map style created with [TileMill](https://github.com/mapbox/tilemill)
+This is CartoCSS map style created with [TileMill](https://github.com/mapbox/tilemill).
 This map was made with styles of water, boundaries, highways and etc for Len.region 
 
 ##Sources
