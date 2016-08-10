@@ -8,7 +8,7 @@ Additionaly in the process of creating map was used [Maki.Icons](https://www.map
 and [Paratype font](http://www.paratype.ru/public/)
 
 ##License
-Published under [Mit License](https://opensource.org/licenses/mit-license.php)
+Published under [MIT License](https://opensource.org/licenses/mit-license.php)
 
 Copyright (c) <2016> <MargaretZh>
 
