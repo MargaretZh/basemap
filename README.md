@@ -4,7 +4,7 @@
 This is CartoCSS map style created with [TileMill](https://github.com/mapbox/tilemill).
 This map was made with styles of water, boundaries, highways and etc for Len.region 
 
-##Sources
+##Icons and fonts
 Additionaly in the process of creating map was used [Maki.Icons](https://github.com/mapbox/maki/)
 and [Paratype font](http://www.paratype.ru/public/)
 
