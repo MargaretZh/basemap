@@ -137,5 +137,5 @@
     text-min-distance:400;
     text-spacing: 400; 
     text-dy: -5;
-    }
+    } 
 }

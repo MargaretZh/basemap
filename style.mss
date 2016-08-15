@@ -12,13 +12,13 @@
 @water_label: #4593AB;
 
 Map {
-  background-color: white;
-  srs: '+proj=eqdc +lat_1=56 +lat_2=57 +lat_0=60 +lon_0=31';
-  font-directory: url(./fonts/);  
+  background-color:white;
+  font-directory: url(./fonts/);
+  srs:'+proj=tmerc +lat_0=0 +lon_0=27 +k=1 +x_0=5500000 +y_0=0 +ellps=krass +towgs84=24.47,-130.89,-81.56,-0,-0,0.13,-0.22 +units=m +no_defs';
 }
 
 /*LANDUSE*/
-#landuse [zoom>=12] {
+#landuse [zoom>=11] {
   [landuse='residential'],
   [landuse='allotments'],
   [landuse='industrial'] {
@@ -27,22 +27,31 @@ Map {
   }
 }
 
+/*BUILDINGS LABELS*/
+#buildings_labels [zoom>=17] { 
+  text-face-name: @sans_book;
+  text-name: '[a_hsnmbr]';
+  text-size: 9;
+  text-halo-radius: 1.5;
+  text-halo-fill:@halo;
+  text-allow-overlap: true;
+} 
 /*OOPT*/
-#nature_reserves [area<400000][zoom=9] {
+#nature_reserves [square<400000][zoom=9] {
   marker-fill: @oopt;
   marker-width: 3; 
 }
-#nature_reserves [area<400000][zoom>9][zoom<14] {
+#nature_reserves [square<400000][zoom>9][zoom<14] {
   marker-fill: @oopt;
   marker-width: 7;
   marker-file: url(icons/marker-15.svg);
 }
-#nature_reserves [area<400000][zoom>=15] {
+#nature_reserves [square<400000][zoom>=15] {
   marker-fill: @oopt;
   marker-width: 10;
   marker-file: url(icons/marker-15.svg);
 }
-#nature_reserves [area>=400000][zoom>=9] {
+#nature_reserves [square>=400000][zoom>=9] {
   [state='active']{
     ::outline {
       line-color: @oopt;
@@ -76,63 +85,38 @@ Map {
   opacity: 0.5;
 }  
 
-/*BUILDINGS LABELS*/
-#buildings [zoom>=17] { 
-  text-face-name: @sans_book;
-  text-name: '[a_hsnmbr]';
-  text-size: 9;
-  text-halo-radius: 1;
-  text-halo-fill:@halo;
-  text-allow-overlap: true;
-}  
-
 /*BOUNDARIES*/
-#boundaries_pol {
+#boundaries_pol [zoom>10] {
   polygon-fill: @boudaries-pol;
   opacity: 1;
 } 
-#coloured_boundaries [zoom<=8] {
+
+#coloured_boundaries [zoom<=10] {
   [name='Кингисеппский район'],
   [name='Тихвинский район'],
   [name='Гатчинский район'],
   [name='Кировский район']{
-    polygon-fill: #6BB274;
-    opacity: 0.2;
+    polygon-fill: #DFFFDA;
     }
   [name='Волосовский район'],
   [name='Лодейнопольский район'],
   [name='Всеволожский район'] {
-    polygon-fill: #9A8FD3;
-    opacity: 0.2;
+    polygon-fill: #F0E6F2;
     }
   [name='Лужский район'],
   [name='Киришский район'],
   [name='Выборгский район'],
-  [name='Бокситогорский район'] {
-    polygon-fill: #D36C6A;
-    opacity: 0.2;
+  [name='Бокситогорский район'],
+  [name='Ломоносовский район']{
+    polygon-fill: #E5D7D3;
     }
-}
-#coloured_boundaries [zoom=9] {
-  [name='Кингисеппский район'],
-  [name='Тихвинский район'],
-  [name='Гатчинский район'],
-  [name='Кировский район']{
-    polygon-fill: #6BB274;
-    opacity: 0.2;
-    }
-  [name='Волосовский район'],
-  [name='Лодейнопольский район'],
-  [name='Всеволожский район'] {
-    polygon-fill: #9A8FD3;
-    opacity: 0.2;
-    }
-  [name='Лужский район'],
-  [name='Киришский район'],
-  [name='Выборгский район'],
-  [name='Бокситогорский район'] {
-    polygon-fill: #D36C6A;
-    opacity: 0.2;
+  [name='Волховский район'],
+  [name='Сланцевский район'],
+  [name='Подпорожский район'],
+  [name='Приозерский район'],
+  [name='Ломоносовский район'],
+  [name='Тосненский район'] {
+    polygon-fill: @boudaries-pol;
     }
 }
 #boundaries_line { 
@@ -163,7 +147,7 @@ Map {
 } 
 
 /*BOUNDARIES LABLES*/ 
-#boundaries_labels [zoom=8] {
+#boundaries_labels [zoom>6][zoom<9] {
   text-face-name: @sans_bold;
   text-name: '[name]';
   text-size: 12;
@@ -335,7 +319,7 @@ Map {
 }    
 
 /*LABELS LAKES*/
-#lakes_labels [area>=1000000][zoom>10][zoom<15][waterway!='riverbank'] {
+#lakes_labels [square>=1000000][zoom>11][zoom<16][waterway!='riverbank'] {
   text-face-name: @sans_italic;
   text-name: '[name]';
   text-size: 10;
@@ -343,8 +327,10 @@ Map {
   text-halo-radius: 2;
   text-halo-fill:@halo;
   text-allow-overlap: false;
+  text-min-distance:400;
+  text-spacing: 400;
 }  
-#lakes_labels [area<=1000000][area>=200000][zoom>=15][waterway!='riverbank'] {
+#lakes_labels [square<=1000000][square>=200000][zoom>=16][waterway!='riverbank'] {
   text-face-name: @sans_italic;
   text-name: '[name]';
   text-size: 12;
@@ -352,10 +338,12 @@ Map {
   text-halo-radius: 2;
   text-halo-fill:@halo;
   text-allow-overlap: true;
+  text-min-distance:400;
+  text-spacing: 400; 
 }  
 
 /*LABELS RIVERS*/
- #rivers_labels [zoom>=11] {
+ #rivers_labels [zoom>=12] {
   text-face-name: @sans_italic;
   text-name: [name];
   text-size: 9;
@@ -366,9 +354,7 @@ Map {
   text-halo-fill:@halo;
   text-allow-overlap: false;
   text-min-distance:400;
-  text-spacing: 300; 
+  text-spacing: 400; 
   text-dy: -7;
 }
-    
-   
-   
+
