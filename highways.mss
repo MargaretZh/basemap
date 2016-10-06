@@ -107,7 +107,7 @@
     shield-spacing: 100;
    }
 }
-#highways_labels [ref!=''][zoom>=10] {
+#highways_labels [ref!=''][zoom>=10][zoom<16] {
   [highway='motorway'],
   [highway='trunk'] {
     shield-file: url(icons/shields/shield-road_20.svg);
@@ -116,8 +116,8 @@
     shield-allow-overlap: false;
     shield-face-name: @sans_book;
     shield-name: '[ref]';
-    shield-min-distance: 100;
-    shield-spacing: 100;
+    shield-min-distance: 200;
+    shield-spacing: 200;
    }
 }
 #highways_labels [zoom>=16] {
@@ -134,8 +134,8 @@
     text-halo-radius: 2;
     text-halo-fill:@halo;
     text-allow-overlap: false;
-    text-min-distance:400;
-    text-spacing: 400; 
+    text-min-distance:300;
+    text-spacing: 300; 
     text-dy: -5;
     } 
 }
